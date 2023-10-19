@@ -27,7 +27,7 @@ export default function DisplayClinical(){
         // }).catch(err=>{
         //     console.log(err)
         // })
-        axios.get("http://44.205.202.191:8000/patientsclinicals/"+id).then(res=>{
+        axios.get("https://clinicalnode.onrender.com/clinicals/"+id).then(res=>{
             setclinicaltData(res.data)
         }).catch(err=>{
             console.log(err)

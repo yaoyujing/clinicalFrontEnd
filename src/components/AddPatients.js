@@ -15,7 +15,7 @@ export default function AddPatients() {
             lastName:lastName,
             age:age
         }
-        axios.get("http://44.205.202.191:8000/patientspatients",patientData).then(res=>{
+        axios.get("https://clinicalnode.onrender.com/patients",patientData).then(res=>{
             navigate('/');
         }).catch(err=>{
             console.log(err)

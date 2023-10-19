@@ -17,7 +17,7 @@ export default function AddClinicals() {
       componentValue:componentValue
     };
     axios
-      .post("http://44.205.202.191:8000/patientsclinicals", patientData)
+      .post("https://clinicalnode.onrender.com/clinicals", patientData)
       .then((res) => {
         navigate("/");
       })

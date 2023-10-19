@@ -23,12 +23,12 @@ export default function Home(){
     console.log(patientData)
     useEffect(()=>{
         //http://localhost/clinicalsapi/patients
-        axios.get("http://44.205.202.191:8000/patientspatients").then(res=>{
+        axios.get("https://clinicalnode.onrender.com/patients").then(res=>{
             setPatientData(res.data)
         }).catch(err=>{
             console.log(err)
         })
-        // axios.get("http://44.205.202.191:8000/patientspatients").then(res=>{
+        // axios.get("https://clinicalnode.onrender.com/patientspatients").then(res=>{
         //     alert(res.data)
         // }).catch(err=>{
         //     console.log(err)
