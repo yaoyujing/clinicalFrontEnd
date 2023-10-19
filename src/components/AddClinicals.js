@@ -17,7 +17,7 @@ export default function AddClinicals() {
       componentValue:componentValue
     };
     axios
-      .post("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/clinicals", patientData)
+      .post("http://44.205.202.191:8000/patientsclinicals", patientData)
       .then((res) => {
         navigate("/");
       })
