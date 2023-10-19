@@ -28,7 +28,7 @@ export default function DisplayClinical(){
         //     console.log(err)
         // })
         axios.get("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/clinicals/"+id).then(res=>{
-            alert(res.data)
+            setclinicaltData(res.data)
         }).catch(err=>{
             console.log(err)
         })
