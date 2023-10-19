@@ -31,7 +31,7 @@ export default function DisplayClinical(){
         // }).catch(err=>{
         //     console.log(err)
         // })
-    },[])
+    },[id])
     return (
         <div align='center'>
             <h2>Patients:</h2>
