@@ -15,7 +15,7 @@ export default function AddPatients() {
             lastName:lastName,
             age:age
         }
-        axios.get("https://clinicalnode.onrender.com/patients",patientData).then(res=>{
+        axios.post("https://clinicalnode.onrender.com/patients",patientData).then(res=>{
             navigate('/');
         }).catch(err=>{
             console.log(err)
