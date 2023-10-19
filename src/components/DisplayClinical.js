@@ -18,6 +18,7 @@ class RowCreator extends React.Component{
 }
 export default function DisplayClinical(){
     const { id } = useParams();
+    // const [userId, setUserId] = useState(null)
     const [clinicalData,setclinicaltData] = useState([])
     useEffect(()=>{
         //http://localhost/clinicalsapi/patients
