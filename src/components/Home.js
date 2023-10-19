@@ -23,7 +23,7 @@ export default function Home(){
     console.log(patientData)
     useEffect(()=>{
         //http://localhost/clinicalsapi/patients
-        axios.get("http://localhost:8000/patients").then(res=>{
+        axios.get("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/patients").then(res=>{
             setPatientData(res.data)
         }).catch(err=>{
             console.log(err)

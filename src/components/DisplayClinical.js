@@ -22,16 +22,16 @@ export default function DisplayClinical(){
     const [clinicalData,setclinicaltData] = useState([])
     useEffect(()=>{
         //http://localhost/clinicalsapi/patients
-        axios.get("http://localhost:8000/clinicals/"+id).then(res=>{
-            setclinicaltData(res.data)
-        }).catch(err=>{
-            console.log(err)
-        })
-        // axios.get("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/patients").then(res=>{
-        //     alert(res.data)
+        // axios.get("http://localhost:8000/clinicals/"+id).then(res=>{
+        //     setclinicaltData(res.data)
         // }).catch(err=>{
         //     console.log(err)
         // })
+        axios.get("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/clinicals/"+id).then(res=>{
+            alert(res.data)
+        }).catch(err=>{
+            console.log(err)
+        })
     },[id])
     return (
         <div align='center'>

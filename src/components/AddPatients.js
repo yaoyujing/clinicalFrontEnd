@@ -15,7 +15,7 @@ export default function AddPatients() {
             lastName:lastName,
             age:age
         }
-        axios.post("http://localhost:8000/patients",patientData).then(res=>{
+        axios.get("http://ec2-54-166-218-190.compute-1.amazonaws.com:8000/patients",patientData).then(res=>{
             navigate('/');
         }).catch(err=>{
             console.log(err)
