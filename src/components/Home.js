@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
 import "../App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import baseurl from "../utils/environment";
 import SidebarComp from "./Sidebar";
 
@@ -53,7 +53,6 @@ class RowCreator extends React.Component {
 
 export default function Home() {
   const [patientData, setPatientData] = useState([]);
-  const navigate = useNavigate();
   const deleteRecord = (patientId)=>{
     axios
     .delete(`${baseurl}patients/${patientId}`)

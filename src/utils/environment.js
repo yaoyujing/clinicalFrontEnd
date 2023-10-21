@@ -9,6 +9,8 @@ switch(env){
     case "production":
         baseurl = "https://clinicalnode.onrender.com/"
         break
+    default:
+        return "failed"
 }
 
 
