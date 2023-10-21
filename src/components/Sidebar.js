@@ -1,4 +1,4 @@
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem} from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png"
 export default function SidebarComp(props){
@@ -7,7 +7,7 @@ export default function SidebarComp(props){
             height:"800px",backgroundColor:"white", width:'200px'
          }}>
                <div className="flex gap-4">
-                <Link to='/' className="w-[100px] h-[100px] mx-auto my-2"> <img src={logo} ></img></Link>
+                <Link to='/' className="w-[100px] h-[100px] mx-auto my-2"> <img alt="" src={logo} ></img></Link>
                   
                </div>
               

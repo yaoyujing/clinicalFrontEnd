@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
 import "../App.css";
-import { Link,navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import SidebarComp from "./Sidebar";
 
