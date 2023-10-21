@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../App.css";
 import SidebarComp from "./Sidebar";
+import baseurl from "../utils/environment";
 
 export default function AddClinicals() {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export default function AddClinicals() {
       componentValue: componentValue,
     };
     axios
-      .post("https://clinicalnode.onrender.com/clinicals", patientData)
+      .post(`${baseurl}clinicals`, patientData)
       .then((res) => {
         navigate("/");
       })

@@ -5,6 +5,7 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import SidebarComp from "./Sidebar";
+import baseurl from "../utils/environment";
 
 class RowCreator extends React.Component {
   render() {
@@ -35,7 +36,7 @@ export default function DisplayClinical() {
     //     console.log(err)
     // })
     axios
-      .get("https://clinicalnode.onrender.com/clinicals/" + id)
+      .get(`${baseurl}clinicals/` + id)
       .then((res) => {
         setclinicaltData(res.data);
       })

@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import baseurl from "../utils/environment";
 import SidebarComp from "./Sidebar";
 
 class RowCreator extends React.Component {
@@ -28,6 +28,15 @@ class RowCreator extends React.Component {
             Add data
           </Link>
         </td>
+        
+        <td>
+          <div
+            className=" hover:text-green-500 underline"
+            onClick={()=>deleteRecord(patient._id)}
+          >
+            Delete
+          </div>
+        </td>
         <td>
           <Link
             className=" hover:text-green-500 underline"
@@ -36,22 +45,7 @@ class RowCreator extends React.Component {
             View detail
           </Link>
         </td>
-        <td>
-          <Link
-            className=" hover:text-green-500 underline"
-            to={"/clinicals/" + patient._id}
-          >
-           Edit
-          </Link>
-        </td>
-        <td>
-          <button
-            className=" hover:text-green-500 underline"
-            onClick={()=>deleteRecord(patient._id)}
-          >
-            Delete
-          </button>
-        </td>
+       
       </tr>
     );
   }
@@ -60,35 +54,35 @@ class RowCreator extends React.Component {
 export default function Home() {
   const [patientData, setPatientData] = useState([]);
   const navigate = useNavigate();
-  
   const deleteRecord = (patientId)=>{
-    const formData = {
-      "_id": patientId
-    }
     axios
-    .delete("https://clinicalnode.onrender.com/patients",formData)
+    .delete(`${baseurl}patients/${patientId}`)
     .then((res) => {
-      navigate("/");
+      console.log(res)
+      if(res.status===200){
+        axios
+          .get(`${baseurl}patients`)
+          .then((res) => {
+            setPatientData(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     })
     .catch((err) => {
       console.log(err);
     });
   }
   useEffect(() => {
-    //http://localhost/clinicalsapi/patients
     axios
-      .get("https://clinicalnode.onrender.com/patients")
+      .get(`${baseurl}patients`)
       .then((res) => {
         setPatientData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    // axios.get("https://clinicalnode.onrender.com/patientspatients").then(res=>{
-    //     alert(res.data)
-    // }).catch(err=>{
-    //     console.log(err)
-    // })
   }, []);
   return (
     <div className="sidebar">
@@ -102,7 +96,6 @@ export default function Home() {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Age</th>
-                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
