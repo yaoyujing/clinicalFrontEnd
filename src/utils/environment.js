@@ -10,7 +10,7 @@ switch(env){
         baseurl = "https://clinicalnode.onrender.com/"
         break
     default:
-        return "failed"
+        console.log("no such")
 }
 
 
