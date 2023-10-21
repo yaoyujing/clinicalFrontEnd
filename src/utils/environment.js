@@ -1,5 +1,5 @@
 let baseurl;
-let env = "production"
+let env = "local"
 
 
 switch(env){

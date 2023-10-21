@@ -5,15 +5,21 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import baseurl from "../utils/environment";
 import SidebarComp from "./Sidebar";
+import BasicModal from "./modal";
 
 class RowCreator extends React.Component {
 
 
   render() {
     var patient = this.props.item;
-    var deleteRecord = this.props.deleteRecord;
+    var setOpen = this.props.setOpen;
+    const { deleteRecord } = this.props;
+    var open = this.props.open;
     return (
+
+    
       <tr>
+      {open&& <BasicModal patient={patient} setOpen={setOpen} open={open} deleteRecord={deleteRecord}></BasicModal>} 
         <td>
           <Link to={"/clinicals/" + patient._id}>{patient.firstName}</Link>
         </td>
@@ -32,7 +38,7 @@ class RowCreator extends React.Component {
         <td>
           <div
             className=" hover:text-green-500 underline"
-            onClick={()=>deleteRecord(patient._id)}
+            onClick={()=>setOpen(true)}
           >
             Delete
           </div>
@@ -47,12 +53,14 @@ class RowCreator extends React.Component {
         </td>
        
       </tr>
+
     );
   }
 }
 
 export default function Home() {
   const [patientData, setPatientData] = useState([]);
+  const [open, setOpen] = useState(false)
   const deleteRecord = (patientId)=>{
     axios
     .delete(`${baseurl}patients/${patientId}`)
@@ -72,6 +80,8 @@ export default function Home() {
     .catch((err) => {
       console.log(err);
     });
+    setOpen(false)
+    
   }
   useEffect(() => {
     axios
@@ -84,7 +94,10 @@ export default function Home() {
       });
   }, []);
   return (
+    <div>
+  
     <div className="sidebar">
+      
       <SidebarComp>
         {" "}
         <div align="center" className="flex flex-col gap-10  mx-auto mt-[40px]">
@@ -102,7 +115,7 @@ export default function Home() {
             </thead>
             <tbody>
               {patientData.map((patient) => (
-                <RowCreator item={patient} deleteRecord={deleteRecord}></RowCreator>
+                <RowCreator item={patient} open={open}  setOpen={setOpen} deleteRecord={deleteRecord}></RowCreator>
               ))}
             </tbody>
           </table>
@@ -112,8 +125,12 @@ export default function Home() {
           >
             Register New Patient
           </Link>
+         
         </div>
+       
       </SidebarComp>
+      
+    </div>
     </div>
   );
 }
